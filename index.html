@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde e Cuidados Pessoais</title>
+    <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+<body>
+    <section id="home">
+        <h1>Bem-vindo ao Site de Saúde e Cuidados Pessoais</h1>
+        <p>A saúde é o nosso bem mais precioso. Descubra como melhorar sua alimentação, manter-se ativo e cuidar da sua saúde mental.</p>
+      </section>
+
+      <div class="menu-toggle" onclick="toggleMenu()">
+        &#9776;
+      </div>
+      <nav id="menu">
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#alimentacao">Alimentação</a></li>
+          <li><a href="#exercicios">Exercícios</a></li>
+          <li><a href="#saude-mental">Saúde Mental</a></li>
+          <li><a href="#calculadora-imc">Calculadora de IMC</a></li>
+        </ul>
+      </nav>
+      <script>
+        function toggleMenu() {
+          document.getElementById('menu').classList.toggle('active');
+        }
+      </script>
+      <style>
+        .menu-toggle { display: none; }
+        #menu { display: none; }
+        #menu.active { display: block; }
+        @media (max-width: 768px) {
+          .menu-toggle { display: block; }
+          #menu { display: none; }
+          #menu.active { display: block; }
+        }
+      </style>
+
+<section id="calculadora-imc">
+    <h2>Calculadora de IMC</h2>
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso" step="0.1" placeholder="Digite seu peso">
+    <label for="altura">Altura (m):</label>
+    <input type="number" id="altura" step="0.01" placeholder="Digite sua altura">
+    <button onclick="calcularIMC()">Calcular IMC</button>
+    <p id="resultado"></p>
+  </section>
+  <script>
+    function calcularIMC() {
+      let peso = parseFloat(document.getElementById('peso').value);
+      let altura = parseFloat(document.getElementById('altura').value);
+      if (peso > 0 && altura > 0) {
+        let imc = peso / (altura * altura);
+        let categoria;
+        if (imc < 18.5) categoria = 'Baixo peso';
+        else if (imc < 24.9) categoria = 'Peso normal';
+        else if (imc < 29.9) categoria = 'Sobrepeso';
+        else categoria = 'Obesidade';
+        document.getElementById('resultado').textContent = `Seu IMC é ${imc.toFixed(2)} (${categoria})`;
+      } else {
+        document.getElementById('resultado').textContent = 'Por favor, insira valores válidos.';
+      }
+    }
+  </script>
+
+  <section id="alimentacao">
+    <h2>Alimentação Saudável</h2>
+    <p>Manter uma alimentação equilibrada é fundamental para a saúde. Inclua frutas, vegetais e proteínas em sua dieta diária.</p>
+  </section>
+  <section id="exercicios">
+    <h2>Exercícios Físicos</h2>
+    <p>Exercícios regulares melhoram o condicionamento físico e mental. Caminhadas, corridas leves e treinos funcionais são ótimos para começar.</p>
+  </section>
+  <section id="saude-mental">
+    <h2>Saúde Mental</h2>
+    <p>A saúde mental é tão importante quanto a física. Práticas como meditação e técnicas de relaxamento ajudam a aliviar o estresse.</p>
+  </section>
+  
+
+</body>
+</html>
